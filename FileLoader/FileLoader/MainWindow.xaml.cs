@@ -73,7 +73,8 @@ namespace FileLoader
             }
 
             ManualResetEventChecked = true;
-            //manualResetEvent.Set();
+            manualResetEvent.Reset();
+            manualResetEvent.Set();
         }
         private void PauseButton_Click(object sender, RoutedEventArgs e)
         {
@@ -120,9 +121,9 @@ namespace FileLoader
                 if (ManualResetEventChecked == false)
                 {
                     MessageBox.Show("false");
+                    manualResetEvent.Reset();
                     manualResetEvent.WaitOne();
                 }
-
                 pool.Release();
 
             }
